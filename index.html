@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GVHN — Galvez Venegas Hess & Navarrete</title>
+  <meta name="description" content="Gálvez Venegas Hess & Navarrete (GVHN). Estudio jurídico con foco en litigación penal, civil y libre competencia. Atención directa y estratégica." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="GVHN — Galvez Venegas Hess & Navarrete" />
+  <meta property="og:description" content="Estudio jurídico chileno con reconocida trayectoria en litigación penal, civil y libre competencia." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1622050266994-75ff1c394898?q=80&w=1200&auto=format&fit=crop" />
+  <meta property="og:url" content="index.html" />
+
+  <!-- Favicon embebido -->
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><rect width="100%" height="100%" fill="%23000"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif" font-size="28" fill="%23fff">GV</text></svg>'/>
+
+  <style>
+    :root{
+      --bg: #f7f7f8;
+      --surface: #ffffff;
+      --ink: #121212;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --brand:#0B3757;
+      --radius:14px;
+      --blur: 10px;
+      --transition: 240ms cubic-bezier(.2,.6,.2,1);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{opacity:.9}
+    .container{width:min(1200px, 92vw); margin-inline:auto}
+
+    /* Header (sin efectos al hacer scroll) */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: saturate(180%) blur(var(--blur));
+      background: rgba(255,255,255,.78);
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 0;
+    }
+    .brand{display:flex; align-items:center; gap:12px;}
+    .brand img{ height:30px; width:auto; object-fit:contain }
+    .brand-title{ font-weight:800; color:var(--brand) }
+    nav a{
+      display:inline-block; padding:8px 10px; border-radius:8px;
+      font-weight:600; color:#111827;
+    }
+
+    /* Botones */
+    .btn{
+      --_bg: var(--brand); --_ink:#fff;
+      display:inline-flex; align-items:center; justify-content:center;
+      background:var(--_bg); color:var(--_ink);
+      border:1px solid rgba(0,0,0,.08); padding:.55rem .85rem;
+      border-radius:10px; font-weight:600;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+      transition: transform var(--transition), background var(--transition);
+      font-size:.92rem;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.secondary{ --_bg:#fff; --_ink:var(--brand); border-color:var(--line) }
+
+    /* HERO (sin parallax) */
+    .hero{
+      position:relative; isolation:isolate;
+      min-height:92vh;
+      display:flex; align-items:center;
+      overflow:hidden; color:#0b0f14;
+    }
+    .hero__bg{
+      position:absolute; inset:0; z-index:-1;
+      background-image:url('https://images.unsplash.com/photo-1622050266994-75ff1c394898?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0');
+      background-size:cover; background-position:center;
+    }
+    .hero__bg::after{
+      content:""; position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.28) 60%, rgba(0,0,0,.55) 100%);
+    }
+    .hero .content{
+      width:100%;
+      display:flex; flex-direction:column;
+      align-items:flex-start; /* izquierda */
+      justify-content:center;
+      padding: 10vh 0;                        /* vertical */
+      padding-left: clamp(16px, 3vw, 40px);   /* separación izquierda */
+      text-align:left;
+    }
+    .content-inner{ width:min(1100px, 92vw); }
+    .kicker{
+      color:#dbeafe; font-weight:800; letter-spacing:.12em; text-transform:uppercase; font-size:.78rem;
+      text-shadow: 0 1px 6px rgba(0,0,0,.35);
+    }
+    h1{
+      margin:.6rem 0 1rem; font-size: clamp(2.2rem, 1.2rem + 3.6vw, 3.8rem);
+      line-height:1.1; font-weight:900; letter-spacing:-.02em; color:#f8fafc;
+      text-shadow: 0 2px 14px rgba(0,0,0,.45);
+      max-width: 22ch;
+    }
+    .subcopy{
+      color:#e5e7eb; max-width: 55ch;
+      font-size: clamp(1rem, .9rem + .35vw, 1.05rem);
+      text-shadow: 0 1px 10px rgba(0,0,0,.4);
+    }
+    .hero__actions{
+      display:flex; gap:12px; margin-top:1.4rem; flex-wrap:wrap; justify-content:flex-start;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header aria-label="Barra superior">
+    <div class="container topbar">
+      <a class="brand" href="index.html" aria-label="Ir al inicio">
+        <img src="https://galvezycia.cl/wp-content/uploads/2023/02/logo-galvezabogados.png" alt="Logo GVHN" decoding="async" />
+        <span class="brand-title">Galvez Venegas Hess &amp; Navarrete</span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <a href="areas.html">Áreas de práctica</a>
+        <a href="equipo.html">Equipo</a>
+        <a class="btn" href="contacto.html" aria-label="Ir a contacto">Contáctanos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="home" role="main">
+    <section class="hero" aria-label="Presentación de GVHN">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container content">
+        <div class="content-inner">
+          <span class="kicker">Estudio jurídico</span>
+          <h1>Litigación penal de excelencia.<br/>Estrategia, rigor y resultados.</h1>
+          <p class="subcopy">
+            Con más de 20 años de experiencia y participación en causas penales de alto impacto en Chile,
+            GVHN ofrece asesoría directa y personalizada, con foco en la oportuna toma de decisiones.
+          </p>
+          <div class="hero__actions">
+            <a class="btn" href="contacto.html">Contáctanos</a>
+            <a class="btn secondary" href="equipo.html">Conoce al equipo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer aria-label="Pie de página" style="padding:20px 0; background:#fff; border-top:1px solid var(--line)">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="https://galvezycia.cl/wp-content/uploads/2023/02/logo-galvezabogados.png" alt="GVHN" style="height:24px" loading="lazy" decoding="async" />
+        <small style="color:var(--muted)">© <span id="year"></span> GVHN. Todos los derechos reservados.</small>
+      </div>
+      <nav aria-label="Enlaces de pie">
+        <a href="areas.html" style="margin-right:12px">Áreas</a>
+        <a href="equipo.html" style="margin-right:12px">Equipo</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script defer>
+    // Solo establecemos el año en el footer. Sin listeners de scroll/parallax.
+    (function(){
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
