@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contacto — GVHN | Gálvez Venegas Hess & Navarrete</title>
+  <meta name="description" content="Contáctanos. Atención directa por socios y equipo dedicado en litigación penal." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contacto — GVHN" />
+  <meta property="og:description" content="Hablemos de tu caso. Respuesta oportuna y directa." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1622050266994-75ff1c394898?q=80&w=1200&auto=format&fit=crop" />
+  <meta property="og:url" content="contacto.html" />
+
+  <!-- Favicon embebido -->
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><rect width="100%" height="100%" fill="%23000"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif" font-size="28" fill="%23fff">GV</text></svg>'/>
+
+  <style>
+    :root{
+      --bg: #f7f7f8;
+      --surface: #ffffff;
+      --ink: #121212;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --brand:#0B3757;
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --shadow-lg: 0 18px 50px rgba(0,0,0,.12);
+      --blur: 10px;
+      --transition: 240ms cubic-bezier(.2,.6,.2,1);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{opacity:.9}
+    .container{width:min(1200px, 92vw); margin-inline:auto}
+
+    /* Header (mismo look & feel) */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: saturate(180%) blur(var(--blur));
+      background: rgba(255,255,255,.78);
+      border-bottom:1px solid rgba(0,0,0,.06);
+    }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:14px 0;
+    }
+    .brand{display:flex; align-items:center; gap:12px;}
+    .brand img{ height:30px; width:auto; object-fit:contain }
+    .brand-title{ font-weight:800; color:var(--brand) }
+    nav a{
+      display:inline-block; padding:8px 10px; border-radius:8px;
+      font-weight:600; color:#111827;
+    }
+    .btn{
+      --_bg: var(--brand); --_ink:#fff;
+      display:inline-flex; align-items:center; justify-content:center;
+      background:var(--_bg); color:var(--_ink);
+      border:1px solid rgba(0,0,0,.08); padding:.55rem .85rem;
+      border-radius:10px; font-weight:600;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition), opacity var(--transition);
+      font-size:.92rem;
+      cursor:pointer;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.secondary{ --_bg:#fff; --_ink:var(--brand); border-color:var(--line) }
+    .btn[disabled]{opacity:.6; cursor:not-allowed; transform:none !important}
+
+    /* HERO (parallax + compacción suave, consistente con Áreas/Equipo) */
+    .hero{
+      position:relative; isolation:isolate;
+      min-height: 50vh;
+      display:flex; align-items:flex-end;
+      overflow:hidden; color:#fff;
+    }
+    .hero__bg{
+      position:absolute; inset:0; z-index:-1;
+      background-image:url('https://images.unsplash.com/photo-1622050266994-75ff1c394898?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0');
+      background-size:cover; background-position:center;
+      transform: translateY(0) scale(1);
+      transition: transform 500ms ease, opacity 500ms ease;
+    }
+    .hero__overlay{
+      position:absolute; inset:0; z-index:-1;
+      background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.45) 70%, rgba(0,0,0,.62) 100%);
+    }
+    .hero .content{ width:100%; padding: clamp(50px, 12vh, 120px) 0 clamp(38px, 8vh, 90px); }
+    .content-inner{
+      width:min(1100px, 92vw);
+      margin-inline:auto;
+      padding-left: clamp(16px, 3vw, 40px);
+      will-change: transform;
+      transition: transform 400ms ease, opacity 400ms ease;
+    }
+    .kicker{
+      color:#dbeafe; font-weight:800; letter-spacing:.12em; text-transform:uppercase; font-size:.78rem;
+      text-shadow: 0 1px 6px rgba(0,0,0,.35);
+    }
+    .hero h1{
+      margin:.6rem 0 1rem; font-size: clamp(2.1rem, 1.1rem + 3.2vw, 3.1rem);
+      line-height:1.1; font-weight:900; letter-spacing:-.02em; color:#f8fafc;
+      text-shadow: 0 2px 14px rgba(0,0,0,.45);
+      max-width: 24ch;
+    }
+    .hero p{
+      color:#e5e7eb; max-width: 65ch;
+      font-size: clamp(1rem, .9rem + .3vw, 1.05rem);
+      text-shadow: 0 1px 10px rgba(0,0,0,.4);
+      margin: 0;
+    }
+
+    /* Contacto */
+    #contacto{ padding: 40px 0 64px; }
+    .form-wrap{
+      display:grid; grid-template-columns: 1fr; gap:18px;
+      background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
+      padding:18px;
+    }
+    @media (min-width: 980px){
+      .form-wrap{ grid-template-columns: 1.1fr .9fr; align-items:start; }
+    }
+    .panel{
+      background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow);
+    }
+    .legend{ margin:0 0 6px; font-weight:800; color:#0b0f14 }
+    .muted{ color:var(--muted); margin:0 0 10px }
+    form{ display:grid; gap:12px }
+    label{ font-weight:600; font-size:.95rem }
+    .field{
+      display:flex; flex-direction:column; gap:6px;
+    }
+    input[type="text"], input[type="email"], input[type="tel"], textarea{
+      width:100%; padding:.7rem .8rem; border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff; color:#111827; font-size:1rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    textarea{ min-height:140px; resize:vertical }
+    input:focus-visible, textarea:focus-visible{
+      outline: 3px solid #1f6feb55; border-color:#93c5fd; box-shadow: 0 0 0 3px #1f6feb22;
+    }
+    .row2{ display:grid; grid-template-columns: 1fr; gap:12px }
+    @media (min-width:640px){ .row2{ grid-template-columns: 1fr 1fr } }
+
+    .alerts{ display:none; gap:10px; margin:6px 0 0 }
+    .alert{
+      display:flex; align-items:flex-start; gap:8px; padding:10px 12px; border-radius:12px; font-size:.95rem;
+      border:1px solid transparent;
+    }
+    .alert.success{ background:#ecfdf5; border-color:#a7f3d0; color:#065f46 }
+    .alert.error{ background:#fef2f2; border-color:#fecaca; color:#7f1d1d }
+
+    .foot-actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+    .tiny{ font-size:.85rem; color:var(--muted) }
+
+    /* Toast */
+    .toast{
+      position:fixed; bottom:16px; right:16px; background:#0b1b2a; color:#e6f1ff;
+      border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:10px 12px; box-shadow:var(--shadow-lg);
+      opacity:0; transform: translateY(6px); pointer-events:none; transition: opacity var(--transition), transform var(--transition);
+      z-index:100;
+    }
+    .toast.show{ opacity:1; transform: translateY(0) }
+
+    footer{ padding: 20px 0; background:#fff; border-top:1px solid var(--line) }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header aria-label="Barra superior">
+    <div class="container topbar">
+      <a class="brand" href="index.html" aria-label="Ir al inicio">
+        <img src="https://galvezycia.cl/wp-content/uploads/2023/02/logo-galvezabogados.png" alt="Logo GVHN" decoding="async" />
+        <span class="brand-title">Galvez Venegas Hess &amp; Navarrete</span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <a href="areas.html">Áreas de práctica</a>
+        <a href="equipo.html">Equipo</a>
+        <a class="btn" href="contacto.html" aria-current="page">Contáctanos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Encabezado de contacto">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="container content">
+      <div class="content-inner" id="heroContentInner">
+        <span class="kicker">Contacto</span>
+        <h1>Hablemos de tu caso.</h1>
+        <p>Atención directa por socios y respuesta oportuna.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" aria-labelledby="contacto-title">
+    <div class="container">
+      <h2 id="contacto-title" style="margin:0 0 12px">Escríbenos</h2>
+
+      <div class="form-wrap">
+        <!-- Formulario -->
+        <div class="panel" role="region" aria-label="Formulario de contacto">
+          <p class="muted" style="margin:0 0 12px">Completa el formulario y te contactaremos a la brevedad.</p>
+
+          <!-- 
+            Integración funcional sin backend usando FormSubmit:
+            - Envío AJAX sin redirección (respuesta JSON + toast)
+            - Honeypot anti-spam
+            - _replyto para que el botón “Responder” vaya al correo del remitente
+            - _subject personalizado
+            - _url se completa con JS para compatibilidad al probar localmente (ver docs)
+            Fuentes:
+            • Documentación general y campos (_next, _subject, _replyto, honeypot) — FormSubmit. :contentReference[oaicite:0]{index=0}
+            • Envío por AJAX con fetch y Accept: application/json — FormSubmit. :contentReference[oaicite:1]{index=1}
+            • Envío AJAX a endpoint /ajax — ejemplo oficial. :contentReference[oaicite:2]{index=2}
+            • Anti-spam honeypot _honey recomendado. :contentReference[oaicite:3]{index=3}
+            • Nota sobre probar desde archivo local y uso de _url. :contentReference[oaicite:4]{index=4}
+          -->
+          <form id="contactForm" method="post" novalidate autocomplete="on">
+            <div class="row2">
+              <div class="field">
+                <label for="name">Nombre completo</label>
+                <input id="name" name="name" type="text" placeholder="Tu nombre" required inputmode="text" />
+              </div>
+              <div class="field">
+                <label for="email">Correo electrónico</label>
+                <input id="email" name="email" type="email" placeholder="tu@correo.cl" required inputmode="email" />
+                <!-- _replyto: FormSubmit usa el campo email para el Reply-To -->
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="subject">Asunto</label>
+              <input id="subject" name="subject" type="text" placeholder="Motivo de contacto" required />
+            </div>
+
+            <div class="field">
+              <label for="message">Mensaje</label>
+              <textarea id="message" name="message" placeholder="Cuéntanos brevemente tu caso" required></textarea>
+            </div>
+
+            <!-- Hidden config for FormSubmit -->
+            <input type="hidden" name="_subject" value="Nuevo contacto — Sitio GVHN" />
+            <input type="hidden" name="_url" id="fs_url" value="" />
+            <!-- Honeypot -->
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+            <!-- (Opcional) Desactivar reCAPTCHA automático: <input type="hidden" name="_captcha" value="false"> -->
+
+            <div class="alerts" id="alerts" aria-live="polite">
+              <div class="alert success" id="alertOk" role="status" aria-hidden="true">Gracias. Hemos recibido tu mensaje.</div>
+              <div class="alert error" id="alertErr" role="alert" aria-hidden="true">No pudimos enviar el mensaje. Intenta nuevamente.</div>
+            </div>
+
+            <div class="foot-actions">
+              <button type="submit" class="btn" id="submitBtn">
+                <span class="btn__label">Enviar</span>
+                <span class="btn__spinner" aria-hidden="true" style="display:none">⏳</span>
+              </button>
+              <span class="tiny">Al enviar aceptas que te contactemos al correo indicado.</span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Datos -->
+        <aside class="panel" role="complementary" aria-label="Datos de contacto">
+          <h3 class="legend">Información</h3>
+          <ul style="list-style:none;padding:0;margin:10px 0 0;display:grid;gap:8px;color:#1f2937">
+            <li><strong>Dirección:</strong> Magdalena 140, Of. 2001 </li>
+            <li><strong>Teléfono:</strong> (+562) 2818 5200</li>
+            <li><strong>Correo:</strong> <a href="mailto:jgalvez@galvezycia.cl">jgalvez@galvezycia.cl</a></li>
+          </ul>
+          <p class="muted" style="margin-top:10px">Atención directa por socios. Confidencialidad absoluta.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer aria-label="Pie de página">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="https://galvezycia.cl/wp-content/uploads/2023/02/logo-galvezabogados.png" alt="GVHN" style="height:24px" loading="lazy" decoding="async" />
+        <small style="color:var(--muted)">© <span id="year"></span> GVHN. Todos los derechos reservados.</small>
+      </div>
+      <nav aria-label="Enlaces de pie">
+        <a href="areas.html" style="margin-right:12px">Áreas</a>
+        <a href="equipo.html" style="margin-right:12px">Equipo</a>
+        <a href="contacto.html" aria-current="page">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script defer>
+    // HERO: Parallax + compactación
+    (function(){
+      const heroBg = document.querySelector('.hero__bg');
+      const content = document.getElementById('heroContentInner');
+      const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+      const onScroll = () => {
+        const y = window.scrollY || 0;
+        const factor = clamp(y / 500, 0, 1);
+        if (heroBg){
+          heroBg.style.transform = `translateY(${factor * -22}px) scale(${1 + factor * 0.04})`;
+          heroBg.style.opacity = String(1 - factor * 0.05);
+        }
+        if (content){
+          const s = 1 - factor * 0.06;
+          content.style.transform = `scale(${s})`;
+          content.style.opacity = String(1 - factor * 0.02 + 0.02);
+          content.style.transformOrigin = 'left bottom';
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // FORM: Envío sin redirección usando FormSubmit (AJAX)
+    (function(){
+      const form = document.getElementById('contactForm');
+      const btn = document.getElementById('submitBtn');
+      const label = btn?.querySelector('.btn__label');
+      const spinner = btn?.querySelector('.btn__spinner');
+      const alerts = document.getElementById('alerts');
+      const ok = document.getElementById('alertOk');
+      const err = document.getElementById('alertErr');
+      const toast = document.getElementById('toast');
+      const fsUrl = document.getElementById('fs_url');
+
+      // Completa _url con la URL actual (mejora compatibilidad al probar local). :contentReference[oaicite:5]{index=5}
+      if (fsUrl) fsUrl.value = window.location.href;
+
+      const showToast = (msg) => {
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(()=> toast.classList.remove('show'), 4000);
+      };
+
+      const setSending = (sending) => {
+        if (!btn) return;
+        btn.disabled = sending;
+        if (label && spinner){
+          label.style.display = sending ? 'none' : '';
+          spinner.style.display = sending ? '' : 'none';
+        }
+      };
+
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Validación nativa
+        if (!form.checkValidity()){
+          form.reportValidity();
+          return;
+        }
+
+        setSending(true);
+        alerts.style.display = 'grid';
+        ok.setAttribute('aria-hidden','true');
+        err.setAttribute('aria-hidden','true');
+
+        try {
+          // Endpoint AJAX de FormSubmit (no redirige). Cambia el correo a quien deba recibir. :contentReference[oaicite:6]{index=6}
+          const endpoint = "https://formsubmit.co/ajax/jgalvez@galvezycia.cl";
+
+          const formData = new FormData(form);
+          // Algunos campos útiles para el email
+          formData.append('_replyto', formData.get('email') || '');
+          // Aceptar JSON para manejar respuesta en página. :contentReference[oaicite:7]{index=7}
+
+          const res = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: formData
+          });
+
+          if (!res.ok){
+            throw new Error('HTTP ' + res.status);
+          }
+          const data = await res.json();
+          if (data.success){
+            ok.setAttribute('aria-hidden','false');
+            err.setAttribute('aria-hidden','true');
+            showToast('Mensaje enviado. Gracias por contactarnos.');
+            form.reset();
+          } else {
+            throw new Error('Respuesta no exitosa');
+          }
+        } catch (e2){
+          err.setAttribute('aria-hidden','false');
+          ok.setAttribute('aria-hidden','true');
+          showToast('No fue posible enviar el mensaje. Intenta nuevamente.');
+          console.error('[Contacto] Error envío:', e2);
+        } finally {
+          setSending(false);
+        }
+      });
+    })();
+
+    // Año en footer
+    (function(){
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
