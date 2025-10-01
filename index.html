@@ -123,20 +123,199 @@
   </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header aria-label="Barra superior">
-    <div class="container topbar">
-      <a class="brand" href="index.html" aria-label="Ir al inicio">
-        <img src="https://galvezycia.cl/wp-content/uploads/2023/02/logo-galvezabogados.png" alt="Logo GVHN" decoding="async" />
-        <span class="brand-title">Galvez Venegas Hess &amp; Navarrete</span>
-      </a>
-      <nav aria-label="Navegación principal">
+  <!-- ===== HEADER compacto y accesible ===== -->
+<header class="site-header" aria-label="Barra superior">
+  <style>
+    /* --- Scope local al header --- */
+    :root{
+      --brand:#0B3757;
+      --ink:#111827;
+      --line:#e5e7eb;
+      --blur:10px;
+    }
+    .site-header{
+      position:sticky; top:0; z-index:1000;
+      background:rgba(255,255,255,.78);
+      backdrop-filter:saturate(180%) blur(var(--blur));
+      border-bottom:1px solid rgba(0,0,0,.06);
+      transition: padding 220ms ease, background 220ms ease, box-shadow 220ms ease;
+    }
+    .site-header .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:8px;
+      padding:8px 0; /* muy compacto en mobile */
+    }
+    .site-header.shrink .topbar{ padding:6px 0 }
+
+    /* Contenedor reutiliza tu .container si existe; si no, cae bien */
+    .site-header .container{ width:min(1200px,92vw); margin-inline:auto; }
+
+    /* Brand */
+    .site-header .brand{ display:flex; align-items:center; gap:10px; min-width:0; }
+    .site-header .brand img{ height:24px; width:auto; object-fit:contain; }
+    .site-header .brand-title{
+      font-weight:800; color:var(--brand);
+      font-size:.92rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      max-width:58vw; /* evita que coma ancho en móviles */
+    }
+
+    /* Botón hamburguesa (visible en mobile) */
+    .nav-toggle{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:36px; height:36px; border-radius:10px; border:1px solid var(--line);
+      background:#fff; color:var(--ink); cursor:pointer;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+    .nav-toggle:hover{ transform:translateY(-1px) }
+    .nav-toggle svg{ width:18px; height:18px }
+
+    /* Nav desktop */
+    .site-nav{ display:none; align-items:center; gap:6px; }
+    .site-nav a{
+      display:inline-block; padding:8px 10px; border-radius:8px; color:var(--ink);
+      font-weight:600; text-decoration:none;
+    }
+    .site-nav .btn{
+      --_bg:var(--brand); --_ink:#fff;
+      background:var(--_bg); color:var(--_ink);
+      border:1px solid rgba(0,0,0,.08); padding:.5rem .8rem; border-radius:10px; font-weight:600;
+      box-shadow:0 2px 8px rgba(0,0,0,.04); font-size:.92rem;
+    }
+
+    /* Panel móvil */
+    .drawer{
+      position:fixed; inset:0; z-index:999; display:none;
+    }
+    .drawer[aria-hidden="false"]{ display:block; }
+    .drawer-backdrop{
+      position:absolute; inset:0; background:rgba(0,0,0,.32); opacity:0; transition:opacity 200ms ease;
+    }
+    .drawer[aria-hidden="false"] .drawer-backdrop{ opacity:1; }
+    .drawer-panel{
+      position:absolute; right:0; top:0; height:100%; width:min(92vw, 360px);
+      background:#fff; border-left:1px solid var(--line);
+      box-shadow: -20px 0 60px rgba(0,0,0,.15);
+      transform:translateX(100%); transition:transform 240ms cubic-bezier(.2,.6,.2,1);
+      display:flex; flex-direction:column; padding:10px;
+    }
+    .drawer[aria-hidden="false"] .drawer-panel{ transform:translateX(0) }
+    .drawer-header{ display:flex; align-items:center; justify-content:space-between; gap:8px; padding:2px 0 6px; }
+    .drawer-close{
+      width:36px; height:36px; border:1px solid var(--line); border-radius:10px; background:#fff; cursor:pointer;
+      display:grid; place-items:center;
+    }
+    .drawer-nav{ display:grid; gap:6px; padding:8px 2px; }
+    .drawer-nav a{
+      padding:10px 12px; border-radius:10px; border:1px solid var(--line); background:#fff; color:var(--ink); font-weight:700;
+    }
+    .drawer-nav .btn{ background:var(--brand); color:#fff; border-color:transparent; text-align:center }
+
+    /* Desktop ≥ 960px */
+    @media (min-width:960px){
+      .nav-toggle{ display:none }
+      .site-nav{ display:flex }
+      .site-header .brand img{ height:28px }
+      .site-header .brand-title{ font-size:1rem; max-width:none }
+      .site-header .topbar{ padding:12px 0 }
+      .site-header.shrink .topbar{ padding:8px 0 }
+    }
+
+    /* Accesibilidad foco */
+    .nav-toggle:focus-visible,
+    .drawer-close:focus-visible,
+    .site-nav a:focus-visible,
+    .drawer-nav a:focus-visible{ outline:3px solid #1f6feb55; outline-offset:2px; }
+
+    @media (prefers-reduced-motion:reduce){
+      .drawer-panel, .drawer-backdrop, .site-header{ transition:none !important }
+    }
+  </style>
+
+  <div class="container topbar">
+    <!-- Marca -->
+    <a class="brand" href="index.html" aria-label="Ir al inicio">
+      <img src="https://galvezycia.cl/wp-content/uploads/2023/02/logo-galvezabogados.png" alt="Logo GVHN" decoding="async" />
+      <span class="brand-title">Galvez Venegas Hess &amp; Navarrete</span>
+    </a>
+
+    <!-- Botón hamburguesa (mobile) -->
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-controls="mobileDrawer" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <!-- Navegación desktop -->
+    <nav class="site-nav" aria-label="Navegación principal">
+      <a href="areas.html">Áreas de práctica</a>
+      <a href="equipo.html">Equipo</a>
+      <a class="btn" href="contacto.html">Contáctanos</a>
+    </nav>
+  </div>
+
+  <!-- Drawer móvil -->
+  <div class="drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-backdrop" data-close></div>
+    <aside class="drawer-panel" role="dialog" aria-modal="true" aria-label="Menú">
+      <div class="drawer-header">
+        <strong style="font-size:1rem;color:var(--brand)">Menú</strong>
+        <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <nav class="drawer-nav">
         <a href="areas.html">Áreas de práctica</a>
         <a href="equipo.html">Equipo</a>
-        <a class="btn" href="contacto.html" aria-label="Ir a contacto">Contáctanos</a>
+        <a class="btn" href="contacto.html">Contáctanos</a>
       </nav>
-    </div>
-  </header>
+    </aside>
+  </div>
+
+  <script>
+    // Encoger header en scroll y controlar menú móvil con accesibilidad básica
+    (function(){
+      const header = document.querySelector('.site-header');
+      let lastY = 0;
+      const onScroll = () => {
+        const y = window.scrollY || 0;
+        if (y > 6 && y >= lastY) header.classList.add('shrink'); else if (y < 6) header.classList.remove('shrink');
+        lastY = y;
+      };
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+
+      const toggleBtn = document.getElementById('navToggle');
+      const drawer = document.getElementById('mobileDrawer');
+      const closeBtn = document.getElementById('drawerClose');
+      const focusable = () => Array.from(drawer.querySelectorAll('a,button,[tabindex]:not([tabindex="-1"])'));
+
+      const open = () => {
+        drawer.setAttribute('aria-hidden','false');
+        toggleBtn.setAttribute('aria-expanded','true');
+        const f = focusable(); f.length && f[0].focus();
+        document.addEventListener('keydown', onKey);
+      };
+      const close = () => {
+        drawer.setAttribute('aria-hidden','true');
+        toggleBtn.setAttribute('aria-expanded','false');
+        toggleBtn.focus();
+        document.removeEventListener('keydown', onKey);
+      };
+      const onKey = (e) => {
+        if (e.key === 'Escape') return close();
+        if (e.key === 'Tab'){
+          const f = focusable(); if (!f.length) return;
+          const first = f[0], last = f[f.length-1];
+          if (e.shiftKey && document.activeElement === first){ last.focus(); e.preventDefault(); }
+          else if (!e.shiftKey && document.activeElement === last){ first.focus(); e.preventDefault(); }
+        }
+      };
+
+      toggleBtn.addEventListener('click', ()=> drawer.getAttribute('aria-hidden')==='true' ? open() : close());
+      closeBtn.addEventListener('click', close);
+      drawer.addEventListener('click', (e)=> { if (e.target.hasAttribute('data-close')) close(); });
+    })();
+  </script>
+</header>
+<!-- ===== /HEADER ===== -->
+
 
   <!-- MAIN -->
   <main id="home" role="main">
